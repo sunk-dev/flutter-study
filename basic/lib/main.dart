@@ -15,6 +15,27 @@ void main(){
   //but dynamic 키워드 사용시 변수의 타입이 고정되지 않아서 다른 타입의 값 저장가능
   dynamic newname='코드팩토리';
   newname=1;
+  
+  //final,const 사용한 변수선언
+  final String idolname='블랙핑크';
+  // idolname='BTS'; => 에러 발생 final로 선언한 변수는 선언후 값 변경 불가
+  
+  const String idolname2='BTS';
+  // idolname2='블랙핑크'; => 에러 발생, const로 선언한 변수는 선언후 값 변경 불가
+  
+  //final const 차이
+  //final : 런타임 상수, 코드가 실행될때 값이 확정되면 사용
+  //const : 빌드타임 상수, 코드를 실행하지 않은 상태에서 값이 확정될떄 사용
 
+
+  //DateTime.now() => 함수가 실행되는 순간의 날짜를 제공함 즉, 런타임, 실행을 해봐야 값을 알수 있음.
+  final DateTime now=DateTime.now();
+  print(now);
+  
+  //하지만 const 변수를 사용시 빌드타임에 값을 알수 있기때문에 DateTime.now() 함수를 const에 선언하여 사용하면 에러가 발생함
+  // const DateTime errornow= DateTime.now();
+  // print(errornow);
+  
+  
 
 }
