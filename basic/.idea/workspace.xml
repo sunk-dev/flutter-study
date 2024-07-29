@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cff4f498-44ca-413a-a25e-c5b8f5bec67f" name="Changes" comment="객체지향, 클래스">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="seonkyoung &lt;103514806+sunk-dev@users.noreply.github.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2juDOdMcsU5dcHc5x0VuE1obIsh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Dart Command Line App.main.dart.executor": "Run",
+    "Flutter.main.dart.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/DevTool/flutter_windows_3.22.0-stable/flutter/bin/cache/dart-sdk",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "dart.settings",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Flutter.main.dart">
+    <configuration name="main.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="basic" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="basic" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Command Line App.main.dart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cff4f498-44ca-413a-a25e-c5b8f5bec67f" name="Changes" comment="" />
+      <created>1722228042055</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722228042055</updated>
+      <workItem from="1722228043153" duration="555000" />
+      <workItem from="1722228610371" duration="2108000" />
+      <workItem from="1722230794942" duration="6529000" />
+      <workItem from="1722253192677" duration="443000" />
+      <workItem from="1722253648026" duration="319000" />
+    </task>
+    <task id="LOCAL-00001" summary="20240729- 플러터 시작">
+      <option name="closed" value="true" />
+      <created>1722228102368</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1722228102368</updated>
+    </task>
+    <task id="LOCAL-00002" summary="var를 사용한 변수선언">
+      <option name="closed" value="true" />
+      <created>1722228273427</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1722228273427</updated>
+    </task>
+    <task id="LOCAL-00003" summary="dynamic를 사용한 변수선언">
+      <option name="closed" value="true" />
+      <created>1722228594732</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1722228594732</updated>
+    </task>
+    <task id="LOCAL-00004" summary="final/const를 사용한 변수선언">
+      <option name="closed" value="true" />
+      <created>1722229258034</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1722229258034</updated>
+    </task>
+    <task id="LOCAL-00005" summary="변수 타입">
+      <option name="closed" value="true" />
+      <created>1722229400100</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722229400100</updated>
+    </task>
+    <task id="LOCAL-00006" summary="컬렉션 List 타입">
+      <option name="closed" value="true" />
+      <created>1722230091902</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1722230091902</updated>
+    </task>
+    <task id="LOCAL-00007" summary="컬렉션 List 타입 함수">
+      <option name="closed" value="true" />
+      <created>1722231209831</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1722231209831</updated>
+    </task>
+    <task id="LOCAL-00008" summary="컬렉션 Map 타입 함수">
+      <option name="closed" value="true" />
+      <created>1722232585430</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722232585430</updated>
+    </task>
+    <task id="LOCAL-00009" summary="컬렉션 Set 타입 함수">
+      <option name="closed" value="true" />
+      <created>1722232816755</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722232816755</updated>
+    </task>
+    <task id="LOCAL-00010" summary="enum">
+      <option name="closed" value="true" />
+      <created>1722232937413</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722232937413</updated>
+    </task>
+    <task id="LOCAL-00011" summary="연산자">
+      <option name="closed" value="true" />
+      <created>1722233762621</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1722233762621</updated>
+    </task>
+    <task id="LOCAL-00012" summary="함수의 특징과 매개변수 지정방법">
+      <option name="closed" value="true" />
+      <created>1722234754542</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1722234754542</updated>
+    </task>
+    <task id="LOCAL-00013" summary="익명함수와 람다함수">
+      <option name="closed" value="true" />
+      <created>1722235849428</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1722235849428</updated>
+    </task>
+    <task id="LOCAL-00014" summary="typedef">
+      <option name="closed" value="true" />
+      <created>1722236215144</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1722236215144</updated>
+    </task>
+    <task id="LOCAL-00015" summary="try catch, throw">
+      <option name="closed" value="true" />
+      <created>1722236442222</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1722236442222</updated>
+    </task>
+    <task id="LOCAL-00016" summary="객체지향, 클래스">
+      <option name="closed" value="true" />
+      <created>1722253524421</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1722253524421</updated>
+    </task>
+    <task id="LOCAL-00017" summary="객체지향, 클래스">
+      <option name="closed" value="true" />
+      <created>1722253530443</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1722253530443</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="20240729- 플러터 시작" />
+    <MESSAGE value="var를 사용한 변수선언" />
+    <MESSAGE value="dynamic를 사용한 변수선언" />
+    <MESSAGE value="final/const를 사용한 변수선언" />
+    <MESSAGE value="변수 타입" />
+    <MESSAGE value="컬렉션 List 타입" />
+    <MESSAGE value="컬렉션 List 타입 함수" />
+    <MESSAGE value="컬렉션 Map 타입 함수" />
+    <MESSAGE value="컬렉션 Set 타입 함수" />
+    <MESSAGE value="enum" />
+    <MESSAGE value="연산자" />
+    <MESSAGE value="함수의 특징과 매개변수 지정방법" />
+    <MESSAGE value="익명함수와 람다함수" />
+    <MESSAGE value="typedef" />
+    <MESSAGE value="try catch, throw" />
+    <MESSAGE value="Create README.md" />
+    <MESSAGE value="객체지향, 클래스" />
+    <option name="LAST_COMMIT_MESSAGE" value="객체지향, 클래스" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
