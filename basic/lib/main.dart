@@ -35,7 +35,23 @@ void main(){
   //하지만 const 변수를 사용시 빌드타임에 값을 알수 있기때문에 DateTime.now() 함수를 const에 선언하여 사용하면 에러가 발생함
   // const DateTime errornow= DateTime.now();
   // print(errornow);
-  
-  
+
+  //1.3 변수 타입
+  //String-문자열
+  String strname='코드팩토리';
+
+  //int -정수
+  int isInt=10;
+
+  //double -실수
+  double isDouble=3.0;
+
+  //bool -불리언
+  bool isTrue=true;
+
+  print(isInt);
+  print(isDouble);
+  print(isTrue);
+
 
 }
