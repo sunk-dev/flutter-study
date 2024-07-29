@@ -7,7 +7,9 @@ class Idol{
   // 생성자 선언
   // 클래스와 같은 이름이어랴함
   // 함수의 매개변수를 선언하는 것처럼 매개변수를 지정해줌
-  Idol(String name):this.name=name;
+
+  //변수 저장과정을 생략하는 버전
+  Idol(this.name);
   void sayName(){
     print('저는 ${this.name}입니다');
   }
