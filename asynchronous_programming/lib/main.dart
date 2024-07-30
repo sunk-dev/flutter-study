@@ -3,34 +3,29 @@
 //Stream -> 지속적으로 값을 반환 받을때 사용
 // Stream 은 한번 리슨하면 Stream에 주입되는 모든 값들을 지속적으로 받아옴.
 
-// 2. 브로드캐스트 스트림
-// stream은 단한번만 listen을 항수 있음
-//브로드 캐스드 스트림을 사용하면 Stream을 여러번 listen하도록 반환
+// 3. 함수로 Stram 반환하기
+// StreamController를 직접사용하지 않고 직접 Stream을 반환하는 함수 작성가능
+// Stream을 반환하는 함수는 async* 로 설전하고 yield 키워드로 반환
 import 'dart:async';
 
+Stream<String> calculate(int number) async*{
+  for(int i=0;i<5;i++){
+    //StreamController의 add() 처럼 yield키워드 이용해서 값 반환
+    yield 'i=$i';
+    await Future.delayed(Duration(seconds: 1));
+  }
+}
+
+void playStream(){
+
+  //StreamController 와 마찬가지로 listen() 함수로 콜백함수 입력
+  calculate(1).listen((val){
+    print(val);
+  });
+}
+
 void main() async{
-  final controller=StreamController();// StreamController 선언
-
-  //여러번 리슨 할수 있는 Broadcast Stream 객체 생성
-  final stream=controller.stream.asBroadcastStream();//
-
-  //첫 listen()함수
-  final streamListener1=stream.listen((val){
-    print('listen1');
-    print(val);
-  });
-
-  //두번째 listen()함수
-  final streamListener2=stream.listen((val){
-    print('listen2');
-    print(val);
-  });
-
-
-  //add() 실행할때마다 listen()하는 모든 콜백함수에 값이 주입됨.
-  controller.sink.add(1);
-  controller.sink.add(2);
-  controller.sink.add(3);
+  playStream();
 
 
 }
