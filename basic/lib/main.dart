@@ -1,45 +1,47 @@
 import 'dart:io';
 
-//믹스인
-// 특정클래스에 원하는 기능들만 골라 넣을 수 있는 기능
-// 특정클래스를 지정해서 속성들을 정의 할수 있으며 지정한 클래스에서도 사용할수 있음
-//인터페이스처럼 한개의 클래스에 여러개의 믹스인 적용가능
+//추상
+//상속이나 인터페이스로 사용하는데 칠요한 속성만 정의하고 인스턴스화 할수도 없도록하는 기능
+//추상 클래스는 추상메서드를 선언할수 있으며 추상메서드는 함수의 반환타입, 이름 매개변수만을 정의하고
+//함수의 바디의 선언을 자식클래스에서 필수로 정의하도록 강제함.
 
- class Idol {
+abstract class Idol {
   final String name;
   final int membersCount;
 
   Idol(this.name, this.membersCount);
 
-  void sayName() {
-    print('저는 ${this.name}입니다');
-  }
+  void sayName() ;
 
+  void sayMembersCount() ;
+}
+
+class GirlGroup implements Idol{
+  final String name;
+  final int membersCount;
+
+  GirlGroup(this.name,this.membersCount);
+
+
+  @override
   void sayMembersCount() {
-    print('${this.name} 멤버는 ${this.membersCount} 명 입니다.');
+    // TODO: implement sayMembersCount
+    print('${this.name}의 멤버는 ${this.membersCount}명 입니다');
   }
-}
 
-mixin IdolSingleMixin on Idol{
-   void sing(){
-     print('${this.name}이 노래를 부릅니다.');
-   }
-}
+  @override
+  void sayName() {
+    // TODO: implement sayName
+    print('저는 여자아이돌 ${this.name}입니다');
+  }
 
-//믹스인을 적용할때는 with 키워드 사용
-class BoyGroup extends Idol with IdolSingleMixin{
-   BoyGroup(super.name,super.membersCount);
-
-   void sayMale(){
-     print('저는 남자 아이돌 입니다');
-   }
 }
 
 
 void main() {
 
-   BoyGroup bts=BoyGroup('BTS', 7);
-   //믹스인에 정의된 sing()함수 사용가능
-  bts.sing();
+  GirlGroup blackPink=GirlGroup('블랙핑크', 4);
+  blackPink.sayName();
+  blackPink.sayMembersCount();
 
 }
