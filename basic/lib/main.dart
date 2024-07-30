@@ -1,9 +1,8 @@
 import 'dart:io';
 
-// 상속
-// 어떤 클래스의 기능을 다른 클래스가 사용할수 있게하는 기법
-// 부모 클래스 -> 기능을 물려주는 클래스
-// 자식 클래스-> 기능을 물려받는 클래스
+//오버라이드
+//부모 클래스또는 인터페이스에 정의된 메서드를 재정의 할때 사용됨
+
 
 class Idol {
   final String name;
@@ -30,9 +29,26 @@ class BoyGroup extends Idol{
   }
 }
 
+class GirlGroup extends Idol{
+  GirlGroup(super.name,super.membersCount);
+
+  @override //override 키워드를 사용!
+  void sayName(){
+    print('저는 여자아이돌 ${this.name}입니다');
+  }
+}
+
 void main() {
   BoyGroup bts=BoyGroup('BTS', 7);
   bts.sayName();
   bts.sayMembersCount();//부모한테 물려 받은 메서드
   bts.sayMale();// 자식이 새로 추가한 메서드
+
+  GirlGroup blackPink=GirlGroup('블랙핑크', 4);
+  blackPink.sayName(); //자시클래스으 오버라이딩된 메서드
+
+  //sayNameCount는 오버라이드 하지 않았기때문에
+  // 그대로 Idol 클래스의 메서드가 실행됩니다.
+  blackPink.sayMembersCount();
 }
+
