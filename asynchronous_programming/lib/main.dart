@@ -1,29 +1,25 @@
-//async와 await
 
-// 비동기 프로그래밍을 유지하면서도 코드 가독성을 유지할수 있음.
-//비동기 프로그래밍 특징을 유지하면서 코드가 작성된 순서대로 프로그램을 실해ㅇ힘
+// Future 는 반환값을 딱 한번 받아내는 비동기 프로그래밍에 사용
+//Stream -> 지속적으로 값을 반환 받을때 사용
+// Stream 은 한번 리슨하면 Stream에 주입되는 모든 값들을 지속적으로 받아옴.
 
-//async 키워드는 함수 매개변수 정의와 바디사이에 입력함
-//결과값 반환가능!
-Future<int> addNumbers(int number1,int number2) async{
-  print('$number1+$number2 계산 시작!');
-
-  //await는 대기하고 싶은 비동기 함수 앞에 입력
-  await Future.delayed(Duration(seconds: 3),(){
-    print('$number1+$number2= ${number1+number2}');
-  });
-
-  print('$number1+$number2 코드실행끝!');
-  return number1+number2;
-}
+// 1. Stream 기본 사용법
+// stream 이용시 dart:async 패키지 이용
+import 'dart:async';
 
 void main() async{
+  final controller=StreamController();// StreamController 선언
+  final stream=controller.stream;// Stream 가져오기
 
-  final result1=await addNumbers(1,1); //addNumbers 함수가 순차적으로 실행되길 원할때
-  print('결과값 $result1');
-  final result2=await addNumbers(2,2);
-  print('결과값 $result2');
+  //Stream listen() 함수를 실행하면 값이 주입될때마다 콜백함수를 실행가능
+  final streamListener1= stream.listen((val){print(val);});
 
+
+  //Stream에 값 주입
+  controller.sink.add(1);
+  controller.sink.add(2);
+  controller.sink.add(3);
+  controller.sink.add(4);
 
 
 }
