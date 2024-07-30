@@ -1,31 +1,38 @@
 import 'dart:io';
 
-//게터세터
-//게터: 값을 가져올때
-//세터: 값을 지정할때
-//사용시 모두 변수처럼 사용한다. 즉 사용할때 메서드명뒤에 ()를 붙이지 않음.
+// 상속
+// 어떤 클래스의 기능을 다른 클래스가 사용할수 있게하는 기법
+// 부모 클래스 -> 기능을 물려주는 클래스
+// 자식 클래스-> 기능을 물려받는 클래스
 
-//세터는 거의 사용하지 않지만 게터는 종종 사용함
 class Idol {
-  // '_'로 변수명을 시작하면
-  // 프라이빗 변수를 선언할수 있음
-  String _name = '블랙핑크';
+  final String name;
+  final int membersCount;
+  Idol(this.name,this.membersCount);
 
-  //get 키워드를 사용해서 게터임을 명시
-  //게터는 메서드와 다르게 매개변수를 전혀 받지 않는다.
-  String get name {
-    return this._name;
+  void sayName(){
+    print('저는 ${this.name}입니다');
   }
+  void sayMembersCount(){
+    print('${this.name} 멤버는 ${this.membersCount} 명 입니다.');
+  }
+}
 
-//세터는 set이라는 키워드를 사용해서 선언
-//세터는 매개변수로 딱하나의 변수를 받을수 있음
-  set name(String name){
-    this._name=name;
+class BoyGroup extends Idol{
+  //상속받은 생성자
+  BoyGroup(String name,
+      int membersCount,
+      ):super(name,membersCount,); //super은 부모 클래스 지칭
+  //상속받지 않은 기능
+
+  void sayMale(){
+    print('저는 남자 아이돌 입니다.');
   }
 }
 
 void main() {
-  Idol blackPink = Idol();
-  blackPink.name='에이핑크';
-  print(blackPink.name);
+  BoyGroup bts=BoyGroup('BTS', 7);
+  bts.sayName();
+  bts.sayMembersCount();//부모한테 물려 받은 메서드
+  bts.sayMale();// 자식이 새로 추가한 메서드
 }
