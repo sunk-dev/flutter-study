@@ -1,22 +1,21 @@
 import 'dart:io';
 
-//제네릭 generic
-//특정변수의 타이ㅂ을 하나의 타입으로 제한하고 싶지 않을때 자주 사용함.
-//<> 사이에 입력되는 값이 제네릭 문자
+//스테틱
+//지금까지 작성한 변수, 메서드등은 모두 각 클래스의 인스턴스에 귀속되지만,
+//static 키워드를 사용하면 클레스 자체에 귀속됨.
 
-//인스턴스화 할때 입력받을 타입을 T로 지정함.
-class Cache<T> {
-  //data의 타입을 추후 입력될 T타입으로 지정함.
-  final T data;
+class Counter{
+  // static 키워드를 사용해 변수선언
+  static int i=0;
 
-  Cache({required this.data});
-
+  Counter(){
+    i++;
+    print(i);
+  }
 }
 
 void main() {
-  //T의 타입을 List<int>로 입력
-  final cache=Cache<List<int>>(data: [1,2,3]);
-
-  //제네릭에 입력된 값을 통해 data 변수의 타입이 자동으로 유추됨
-  print(cache.data.reduce((v,e)=>v+e));
+  Counter count1=Counter();
+  Counter count2=Counter();
+  Counter count3=Counter();
 }
