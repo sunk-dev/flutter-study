@@ -1,11 +1,11 @@
 import 'dart:io';
 
-//인터페이스
-//공통으로 필요한 기능을 정의만 해두는 역할
-//인터페이스를 지정하는 키워드는 따로 없으며
-//상속은 단하나의 클래스만 할수 있지만 인터페이스는 적용개수에 제한이 없음.
+//믹스인
+// 특정클래스에 원하는 기능들만 골라 넣을 수 있는 기능
+// 특정클래스를 지정해서 속성들을 정의 할수 있으며 지정한 클래스에서도 사용할수 있음
+//인터페이스처럼 한개의 클래스에 여러개의 믹스인 적용가능
 
-class Idol {
+ class Idol {
   final String name;
   final int membersCount;
 
@@ -20,24 +20,26 @@ class Idol {
   }
 }
 
-// implements 키워드를 사용하면 원하는 클래스를 인터페이스로 사용가능
-class GirlGroup implements Idol {
-  final String name;
-  final int membersCount;
-
-  GirlGroup(this.name, this.membersCount);
-  //인터페이스는 반드시 모든 기능을 다시 정의해 줘야함!
-  void sayName() {
-    print('저는 여자아이돌 ${this.name}입니다');
-  }
-
-  void sayMembersCount() {
-    print('${this.name}멤버는 ${this.membersCount} 명 입니다!');
-  }
+mixin IdolSingleMixin on Idol{
+   void sing(){
+     print('${this.name}이 노래를 부릅니다.');
+   }
 }
 
+//믹스인을 적용할때는 with 키워드 사용
+class BoyGroup extends Idol with IdolSingleMixin{
+   BoyGroup(super.name,super.membersCount);
+
+   void sayMale(){
+     print('저는 남자 아이돌 입니다');
+   }
+}
+
+
 void main() {
-  GirlGroup blackPink = GirlGroup('블랙핑크', 4);
-  blackPink.sayName();
-  blackPink.sayMembersCount();
+
+   BoyGroup bts=BoyGroup('BTS', 7);
+   //믹스인에 정의된 sing()함수 사용가능
+  bts.sing();
+
 }
