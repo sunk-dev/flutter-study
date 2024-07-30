@@ -6,6 +6,8 @@ import 'dart:io';
 
 class Counter{
   // static 키워드를 사용해 변수선언
+  //클래스에 직접 귀속되기에 생성자에서 static 값을 지정하지 못함.
+  //인스턴스끼리 공유해야하는 정보에 지정.
   static int i=0;
 
   Counter(){

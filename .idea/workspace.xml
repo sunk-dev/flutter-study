@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e90f73f7-ece0-4011-a4c8-65f614212056" name="Changes" comment="믹스인">
+    <list default="true" id="e90f73f7-ece0-4011-a4c8-65f614212056" name="Changes" comment="스테틱">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basic/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/basic/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +70,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Android App.android.app">
+  <component name="RunManager" selected="Dart Command Line App.main.dart">
     <configuration name="android.app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="android.app.main" />
       <option name="DEPLOY" value="true" />
@@ -146,7 +147,7 @@
       <updated>1722303969095</updated>
       <workItem from="1722303970613" duration="349000" />
       <workItem from="1722304342021" duration="3984000" />
-      <workItem from="1722313020811" duration="66000" />
+      <workItem from="1722313020811" duration="1219000" />
     </task>
     <task id="LOCAL-00001" summary="0730-&gt; 네임드 생성자">
       <option name="closed" value="true" />
@@ -204,7 +205,31 @@
       <option name="project" value="LOCAL" />
       <updated>1722308248448</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="추상">
+      <option name="closed" value="true" />
+      <created>1722313505744</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722313505744</updated>
+    </task>
+    <task id="LOCAL-00009" summary="제네릭 ★">
+      <option name="closed" value="true" />
+      <created>1722313935474</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722313935474</updated>
+    </task>
+    <task id="LOCAL-00010" summary="스테틱">
+      <option name="closed" value="true" />
+      <created>1722314185110</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722314185110</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +243,10 @@
     <MESSAGE value="오버라이드" />
     <MESSAGE value="인터페이스" />
     <MESSAGE value="믹스인" />
-    <option name="LAST_COMMIT_MESSAGE" value="믹스인" />
+    <MESSAGE value="추상" />
+    <MESSAGE value="제네릭 ★" />
+    <MESSAGE value="스테틱" />
+    <option name="LAST_COMMIT_MESSAGE" value="스테틱" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
