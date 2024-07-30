@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cff4f498-44ca-413a-a25e-c5b8f5bec67f" name="Changes" comment="객체지향, 클래스">
-      <change beforePath="$PROJECT_DIR$/../.idea/flutter_study_0729.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/flutter_study_0729.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,13 +55,13 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
-      <module name="basic" />
+      <module name="ch01_02_basic" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="basic" />
+      <module name="ch01_02_basic" />
       <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -98,6 +95,7 @@
       <workItem from="1722253192677" duration="443000" />
       <workItem from="1722253648026" duration="319000" />
       <workItem from="1722304323489" duration="17000" />
+      <workItem from="1722314895649" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="20240729- 플러터 시작">
       <option name="closed" value="true" />
@@ -246,7 +244,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
