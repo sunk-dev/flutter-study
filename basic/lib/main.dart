@@ -1,23 +1,26 @@
 import 'dart:io';
 
-//스테틱
-//지금까지 작성한 변수, 메서드등은 모두 각 클래스의 인스턴스에 귀속되지만,
-//static 키워드를 사용하면 클레스 자체에 귀속됨.
+// 캐스케이드 연산자
+// 해당 인스턴스의 속성이나 멤버함수를 연속해서 사용하는 기능
+class Idol {
+  final String name;
+  final int membersCount;
+  Idol(this.name,this.membersCount);
 
-class Counter{
-  // static 키워드를 사용해 변수선언
-  //클래스에 직접 귀속되기에 생성자에서 static 값을 지정하지 못함.
-  //인스턴스끼리 공유해야하는 정보에 지정.
-  static int i=0;
-
-  Counter(){
-    i++;
-    print(i);
+  void sayName(){
+    print('저는 ${this.name}입니다');
+  }
+  void sayMembersCount(){
+    print('${this.name} 멤버는 ${this.membersCount} 명 입니다.');
   }
 }
 
+
 void main() {
-  Counter count1=Counter();
-  Counter count2=Counter();
-  Counter count3=Counter();
+  //cascade operator(..)을 사용하면
+  // 선언한 변수의 메서드를 연속으로 실행할수 있음
+
+  Idol blackPink=Idol('블랙핑크', 4)
+      ..sayName()
+      ..sayMembersCount();
 }
