@@ -5,18 +5,24 @@ import 'package:flutter/rendering.dart';
 배치 관련 위젯
 - 위젯을 가로 또는 세로로 배치하거나 겹칠때 상ㅅㅇ
  Row위젯
- - 위젯을 가로오 위젯을 배치하는데 사용
+ - 위젯을 가로로 위젯을 배치하는데 사용
  - childern 매개변수 사용
  - Main Axis(주축): 가로, Cross Axis(반대축):세로
+
+ Column 위젯
+  - 위젯을 세로로 위젯을 배치하는데 사용
+ - childern 매개변수 사용
+ - Main Axis(주축): 세로, Cross Axis(반대축):가로
+
  */
 
 
 
 void main() {
-  runApp(RowWidgetExample());
+  runApp(ColumnWidgetExample());
 }
 
-class RowWidgetExample extends StatelessWidget{
+class ColumnWidgetExample extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -25,12 +31,12 @@ class RowWidgetExample extends StatelessWidget{
         body: SizedBox(
 
           //반대축에서 이동할 공간을 제거하기 위해 높이를 최대한으로 설정
-          height: double.infinity,
-          child: Row(
+          width: double.infinity,
+          child: Column(
             //주축 정렬지정
             mainAxisAlignment: MainAxisAlignment.center,
             //반대축정렬지정
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.center,
 
             //넣고싶은 위젯 입력
             children: [
