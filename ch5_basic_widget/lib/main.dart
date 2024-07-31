@@ -15,6 +15,21 @@ import 'package:flutter/material.dart';
   - ListView 위젯: 리스트 구현시사용 다수의 위젯 입력이 가능하녀, 입력된 위젯이 화면을 벗어나면 스크롤 가능
  */
 
+/*
+GestureDetector 위젯에서 제공하는 제스체 매개변수
+onTap
+onDoubleTap
+onLongPress
+onPanStart: 수평또는 수직으로 드래그가 시작되었을떄
+onPanUpdate: 수평또는 수직으로 드래그 하다가 드래기 위치가 업데이트 될때마다 실행하는 함수
+onPanEnd: 수평또는 수직드래그가 끝났을때
+onHorizontalDragStart: 수평으로 드래그를 시작했을떄
+onHorizontalDragUpdate:수평으로 드래그하는 동안 드래그 위치가 업데이트 될때마다 실행되는함수
+onHorizontalDragEnd
+onScaleStart
+onScaleUpdate
+onScaleEnd
+ */
 
 void main() {
   runApp(MyApp());
@@ -27,11 +42,28 @@ class MyApp extends StatelessWidget{
       home: Scaffold(
         body: Center(
           // IconButton은 아이콘은 버튼으로 생성하는 위젯
-          child:IconButton(
-            //클릭시 실행
-            onPressed: (){},
-            icon: Icon(
-              Icons.home,
+          child:GestureDetector(
+            //한번 탭했을때 실행할 함수
+            onTap: (){
+              //출력결과는 안드로인드 스튜디오늬 Run탭에서 확인 가능합니다.
+              print('on tap');
+            },
+            //두번탭했을때 실행할 함수
+            onDoubleTap: (){
+              print('on double tap');
+            },
+
+            //길게 눌렀을때 실행할 함수
+            onLongPress: (){
+              print('on Long press');
+            },
+            //제스처를 적용할 위젯
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.deepPurple,
+              ),
+              width: 100.0,
+              height: 100.0,
             ),
           )
         ),
