@@ -10,7 +10,15 @@ SizedBox
 - const 생성자를 사용했을때 퍼포먼스에서 이점을 얻을 수 있음
 Padding 위젯
 - child 위젯에 여백을 제공할때 사용
+- 크기 내부에 간격이 추가됨
 - EdgeInsets 라는 매개 변수 입력
+
+- margin -> 위젯바깥에 간격을 추가
+EdgeInsets 다양항 생성자
+- EdgeInsets.all(): 상하 좌우 매개변수에 입력된 패딩을 균등 적용
+- EdgeInsets.symmetric(horizontal:16.0,vertical:16.0) : 가로와 세로 패딩을 따로 적용
+- EdgeInsets.only(): 상하좌우 패딩 따로 적용
+- EdgeInsets.fromLTRB(): 좌 ,위,우,아래 순서로 패딩 입력
  */
 
 
@@ -25,14 +33,21 @@ class FloatingActionButtonExample extends StatelessWidget{
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          color: Colors.deepPurple,
-          child: Padding(
-            //상하좌우로 모두 16픽셀만큼 패딩적용
-            padding: EdgeInsets.all(16.0,),
-            child: Container(
-              color: Colors.blueAccent,
-              width: 50.0,
-              height: 50.0,
+          color: Colors.black,
+          child: Container(
+            color: Colors.blueAccent,
+
+            //마진 적용 위치
+            margin: EdgeInsets.all(16.0),
+            //패딩 적용
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Container(
+                color: Colors.deepPurple,
+                width: 50.0,
+                height: 50.0,
+
+              ),
             ),
           ),
         ),
