@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 /*
 디자인 관련 위젯
@@ -19,6 +20,9 @@ EdgeInsets 다양항 생성자
 - EdgeInsets.symmetric(horizontal:16.0,vertical:16.0) : 가로와 세로 패딩을 따로 적용
 - EdgeInsets.only(): 상하좌우 패딩 따로 적용
 - EdgeInsets.fromLTRB(): 좌 ,위,우,아래 순서로 패딩 입력
+
+SafeArea
+- 기기별 예외처리 없이 안전한 화면에서 위젯그릴수 있음.
  */
 
 
@@ -32,23 +36,17 @@ class FloatingActionButtonExample extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          color: Colors.black,
+        body: SafeArea(
+          //원하는 부위만 따로 적용가능
+          // true: 적용 false :미적용
+          top: true,
+          bottom: true,
+          left: true,
+          right: true,
           child: Container(
-            color: Colors.blueAccent,
-
-            //마진 적용 위치
-            margin: EdgeInsets.all(16.0),
-            //패딩 적용
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Container(
-                color: Colors.deepPurple,
-                width: 50.0,
-                height: 50.0,
-
-              ),
-            ),
+            color: Colors.deepPurple,
+            height: 300.0,
+            width: 300.0,
           ),
         ),
 
