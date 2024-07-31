@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 배경을 추가하거나 간격을 추가하거나등 디자인적 요소를 적용할때 사용
 Container 위젯
 - 말 그대로 다른 위젯을 담는데 사용, 위젯의 너비와 높이를 지정하거나, 배경이나 테투리를 추가할때 많이 사용
+SizedBox
+- 일반적으로 일정크기의 공간을 공백으로 두고 싶을때 사용됨.
+- const 생성자를 사용했을때 퍼포먼스에서 이점을 얻을 수 있음
  */
 
 
@@ -18,26 +21,16 @@ class FloatingActionButtonExample extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          //스타일 작용
-          decoration: BoxDecoration(
-            //배경색 적용
-            color: Colors.deepPurple,
-            //테두리적용
-            border: Border.all(
-              //테두리 굵기
-              width: 16.0,
-              //테두리 색상
-              color: Colors.black
-            ),
-            //모서리 둥굴게 만들기
-            borderRadius: BorderRadius.circular(16.0,),
-
-          ),
-          //높이
+        body: SizedBox(
+          //높이 지정
           height: 200.0,
-          //너비
-          width: 100.0,
+          //너비지정
+          width: 200.0,
+          //sizedBox는 색상이 없으므로 크기를 확인하는
+          //용도로 Container 추가
+          child: Container(
+            color: Colors.deepPurple,
+          ),
         ),
 
       ),
