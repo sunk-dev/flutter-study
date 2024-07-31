@@ -8,6 +8,9 @@ Container 위젯
 SizedBox
 - 일반적으로 일정크기의 공간을 공백으로 두고 싶을때 사용됨.
 - const 생성자를 사용했을때 퍼포먼스에서 이점을 얻을 수 있음
+Padding 위젯
+- child 위젯에 여백을 제공할때 사용
+- EdgeInsets 라는 매개 변수 입력
  */
 
 
@@ -21,15 +24,16 @@ class FloatingActionButtonExample extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
-        body: SizedBox(
-          //높이 지정
-          height: 200.0,
-          //너비지정
-          width: 200.0,
-          //sizedBox는 색상이 없으므로 크기를 확인하는
-          //용도로 Container 추가
-          child: Container(
-            color: Colors.deepPurple,
+        body: Container(
+          color: Colors.deepPurple,
+          child: Padding(
+            //상하좌우로 모두 16픽셀만큼 패딩적용
+            padding: EdgeInsets.all(16.0,),
+            child: Container(
+              color: Colors.blueAccent,
+              width: 50.0,
+              height: 50.0,
+            ),
           ),
         ),
 
