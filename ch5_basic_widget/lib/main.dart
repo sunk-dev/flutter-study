@@ -14,15 +14,18 @@ import 'package:flutter/rendering.dart';
  - childern 매개변수 사용
  - Main Axis(주축): 세로, Cross Axis(반대축):가로
 
+ Flexible 위젯
+ - 얼마만큼 비율로 공간을 차지 할건지 지정가능
+
  */
 
 
 
 void main() {
-  runApp(ColumnWidgetExample());
+  runApp(FlexibleWidgetExample());
 }
 
-class ColumnWidgetExample extends StatelessWidget{
+class FlexibleWidgetExample extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -40,27 +43,23 @@ class ColumnWidgetExample extends StatelessWidget{
 
             //넣고싶은 위젯 입력
             children: [
-              Container(
-                height: 50.0,
-                width: 50.0,
-                color: Colors.red,
+              Flexible(
+                //flex:남은 공간를 차지할 비용
+                // flex를 제공하지 않을시 기본값 1
+                flex: 1,
+                child:  Container(
+                  color: Colors.red,
+                ),
+              ),
+              Flexible(
+                //flex:남은 공간를 차지할 비용
+                // flex를 제공하지 않을시 기본값 1
+                flex: 3,
+                child:  Container(
+                  color: Colors.blueAccent,
+                ),
               ),
 
-              //Sized 박스는 일반적으로 공백을 생성할때 사용
-              const SizedBox(width: 12.0,),
-              Container(
-                height: 50.0,
-                width: 50.0,
-                color: Colors.green,
-              ),
-
-              //Sized 박스는 일반적으로 공백을 생성할때 사용
-              const SizedBox(width: 12.0,),
-              Container(
-                height: 50.0,
-                width: 50.0,
-                color: Colors.blueAccent,
-              ),
 
 
             ],
