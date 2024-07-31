@@ -19,10 +19,18 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-          // 하나의 위젯만 가운데 정렬가능
-          child: Text('Code Factory'),
+        body: SizedBox(
+          width: double.infinity,
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [//원하는 만큼 위젯 입력가능
+              Text('Code'),
+              Text('Factory'),
+            ],
+          ),
         ),
       ),
     )
