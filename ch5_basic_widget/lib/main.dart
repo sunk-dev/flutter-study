@@ -16,23 +16,28 @@ import 'package:flutter/material.dart';
  */
 
 /*
-GestureDetector 위젯에서 제공하는 제스체 매개변수
-onTap
-onDoubleTap
-onLongPress
-onPanStart: 수평또는 수직으로 드래그가 시작되었을떄
-onPanUpdate: 수평또는 수직으로 드래그 하다가 드래기 위치가 업데이트 될때마다 실행하는 함수
-onPanEnd: 수평또는 수직드래그가 끝났을때
-onHorizontalDragStart: 수평으로 드래그를 시작했을떄
-onHorizontalDragUpdate:수평으로 드래그하는 동안 드래그 위치가 업데이트 될때마다 실행되는함수
-onHorizontalDragEnd
-onScaleStart
-onScaleUpdate
-onScaleEnd
+FloatingActionButton -> 디자인 형태중하나 플로팅작업 버튼 만들때 사용
  */
 
 void main() {
-  runApp(MyApp());
+  runApp(FloatingActionButtonExample());
+}
+
+class FloatingActionButtonExample extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          //클릭했을때 실행할 함수
+          onPressed: (){},
+          child: Text('클릭'),
+        ),
+        body: Container(),
+      ),
+    );
+  }
+
 }
 
 class MyApp extends StatelessWidget{
