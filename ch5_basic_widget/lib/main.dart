@@ -26,20 +26,17 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text(
-            //작성하고 싶은 글
-            'IM is freaking cute. :)',
-            //글자에 스타일 적용
-            style: TextStyle(
-              //글자크기
-              fontSize:16.0,
-              //글자 굵기
-              fontWeight: FontWeight.w700,
-              //글자 색상
-              color: Colors.deepPurple,
-
+          child: TextButton(
+            //클릭시 실행
+            onPressed: (){},
+            //스타일 지정
+            style: TextButton.styleFrom(
+              //주색상지정
+              foregroundColor: Colors.blue,
             ),
-          ),
+            //버튼에 ㅓㅎ은 위젯
+            child: Text('텍스트 버튼'),
+          )
         ),
       ),
     );
