@@ -17,23 +17,32 @@ import 'package:flutter/material.dart';
 
 
 void main() {
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SizedBox(
-          width: double.infinity,
+  runApp(MyApp());
+}
 
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [//원하는 만큼 위젯 입력가능
-              Text('Code'),
-              Text('Factory'),
-            ],
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text(
+            //작성하고 싶은 글
+            'IM is freaking cute. :)',
+            //글자에 스타일 적용
+            style: TextStyle(
+              //글자크기
+              fontSize:16.0,
+              //글자 굵기
+              fontWeight: FontWeight.w700,
+              //글자 색상
+              color: Colors.deepPurple,
+
+            ),
           ),
         ),
       ),
-    )
-  );
+    );
+  }
 }
 
