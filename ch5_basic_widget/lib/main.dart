@@ -26,16 +26,16 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: TextButton(
+          child: OutlinedButton(
             //클릭시 실행
             onPressed: (){},
             //스타일 지정
-            style: TextButton.styleFrom(
+            style: OutlinedButton.styleFrom(
               //주색상지정
-              foregroundColor: Colors.blue,
+              foregroundColor: Colors.green,
             ),
             //버튼에 ㅓㅎ은 위젯
-            child: Text('텍스트 버튼'),
+            child: Text('아웃라인드 버튼'),
           )
         ),
       ),
