@@ -17,15 +17,20 @@ import 'package:flutter/rendering.dart';
  Flexible 위젯
  - 얼마만큼 비율로 공간을 차지 할건지 지정가능
 
+ Expanded 위젯
+ - Flexible 위젯을 상속하는 위젯
+ - 위젯이 남아있는 공간을 최대한으로 차지
+
+
  */
 
 
 
 void main() {
-  runApp(FlexibleWidgetExample());
+  runApp(ExpandedWidgetExample());
 }
 
-class FlexibleWidgetExample extends StatelessWidget{
+class ExpandedWidgetExample extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -43,18 +48,18 @@ class FlexibleWidgetExample extends StatelessWidget{
 
             //넣고싶은 위젯 입력
             children: [
-              Flexible(
+              Expanded(
                 //flex:남은 공간를 차지할 비용
                 // flex를 제공하지 않을시 기본값 1
-                flex: 1,
+                flex: 3,
                 child:  Container(
                   color: Colors.red,
                 ),
               ),
-              Flexible(
+              Expanded(
                 //flex:남은 공간를 차지할 비용
                 // flex를 제공하지 않을시 기본값 1
-                flex: 3,
+                // flex: 3,
                 child:  Container(
                   color: Colors.blueAccent,
                 ),
