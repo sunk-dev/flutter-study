@@ -21,16 +21,20 @@ import 'package:flutter/rendering.dart';
  - Flexible 위젯을 상속하는 위젯
  - 위젯이 남아있는 공간을 최대한으로 차지
 
+ Stack 위젯
+- 위젯을 겹치는 기능 제공
+- 위젯을 올린 듯한 효과 제공
+
 
  */
 
 
 
 void main() {
-  runApp(ExpandedWidgetExample());
+  runApp(StackWidgetExample());
 }
 
-class ExpandedWidgetExample extends StatelessWidget{
+class StackWidgetExample extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -40,33 +44,24 @@ class ExpandedWidgetExample extends StatelessWidget{
 
           //반대축에서 이동할 공간을 제거하기 위해 높이를 최대한으로 설정
           width: double.infinity,
-          child: Column(
-            //주축 정렬지정
-            mainAxisAlignment: MainAxisAlignment.center,
-            //반대축정렬지정
-            crossAxisAlignment: CrossAxisAlignment.center,
-
-            //넣고싶은 위젯 입력
+          child: Stack(
             children: [
-              Expanded(
-                //flex:남은 공간를 차지할 비용
-                // flex를 제공하지 않을시 기본값 1
-                flex: 3,
-                child:  Container(
-                  color: Colors.red,
-                ),
+
+              Container(
+                height: 300.0,
+                width: 300.0,
+                color: Colors.red,
               ),
-              Expanded(
-                //flex:남은 공간를 차지할 비용
-                // flex를 제공하지 않을시 기본값 1
-                // flex: 3,
-                child:  Container(
-                  color: Colors.blueAccent,
-                ),
+              Container(
+                height: 250.0,
+                width: 250.0,
+                color: Colors.yellow,
               ),
-
-
-
+              Container(
+                height: 200.0,
+                width: 200.0,
+                color: Colors.blueAccent,
+              ),
             ],
           ),
         ),
