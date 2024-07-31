@@ -26,16 +26,13 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child:ElevatedButton(
+          // IconButton은 아이콘은 버튼으로 생성하는 위젯
+          child:IconButton(
             //클릭시 실행
             onPressed: (){},
-            //스타일 지정
-            style: ElevatedButton.styleFrom(
-              //주색상지정
-              backgroundColor: Colors.green,
+            icon: Icon(
+              Icons.home,
             ),
-            //버튼에 들어갈 위젯
-            child: Text('엘리베이티드 버튼'),
           )
         ),
       ),
