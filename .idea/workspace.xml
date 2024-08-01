@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e90f73f7-ece0-4011-a4c8-65f614212056" name="Changes" comment="캐스케이드 연산자 ★" />
+    <list default="true" id="e90f73f7-ece0-4011-a4c8-65f614212056" name="Changes" comment="update README.md">
+      <change beforePath="$PROJECT_DIR$/.idea/flutter_study_0729.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flutter_study_0729.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +29,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="android" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -52,6 +60,7 @@
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Study/flutter_study_0729&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -67,7 +76,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Dart Command Line App.main.dart">
+  <component name="RunManager" selected="Android App.android.app">
     <configuration name="android.app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="android.app.main" />
       <option name="DEPLOY" value="true" />
@@ -145,6 +154,8 @@
       <workItem from="1722303970613" duration="349000" />
       <workItem from="1722304342021" duration="3984000" />
       <workItem from="1722313020811" duration="1219000" />
+      <workItem from="1722474432923" duration="50000" />
+      <workItem from="1722478828152" duration="93000" />
     </task>
     <task id="LOCAL-00001" summary="0730-&gt; 네임드 생성자">
       <option name="closed" value="true" />
@@ -234,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722314449519</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update README.md">
+      <option name="closed" value="true" />
+      <created>1722474468894</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1722474468894</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +271,8 @@
     <MESSAGE value="제네릭 ★" />
     <MESSAGE value="스테틱" />
     <MESSAGE value="캐스케이드 연산자 ★" />
-    <option name="LAST_COMMIT_MESSAGE" value="캐스케이드 연산자 ★" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
