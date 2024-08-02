@@ -31,7 +31,18 @@ class HomeScreen extends StatelessWidget{
           },
           icon: Icon(
             Icons.home,
-          ),)
+          ),),
+
+          IconButton(onPressed: (){
+            controller?.goBack();
+          }, icon: Icon(
+            Icons.arrow_back_ios
+          )),
+          IconButton(onPressed: (){
+            controller?.goForward();
+          }, icon: Icon(
+              Icons.arrow_forward_ios
+          ))
         ],
       ),
       body: WebView(
