@@ -21,6 +21,18 @@ class HomeScreen extends StatelessWidget{
         //앱 타이틀 설정
         title: Text('code Factory'),
         centerTitle: true,
+
+        //AppBar의 actions 매개변수
+        actions: [
+          IconButton(onPressed: (){
+            if(controller!=null){
+              controller!.loadUrl('https://blog.codefactory.ai');
+            }
+          },
+          icon: Icon(
+            Icons.home,
+          ),)
+        ],
       ),
       body: WebView(
         onWebViewCreated: (WebViewController controller){
