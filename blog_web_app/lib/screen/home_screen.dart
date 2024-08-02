@@ -9,7 +9,9 @@ import 'package:webview_flutter/webview_flutter.dart';
 class HomeScreen extends StatelessWidget{
 
   //const 생성자
-  const HomeScreen({Key?key}):super(key:key);
+  HomeScreen({Key?key}):super(key:key);//const키워드 삭제
+  WebViewController? controller; //컨트롤러 변수 생성
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +23,9 @@ class HomeScreen extends StatelessWidget{
         centerTitle: true,
       ),
       body: WebView(
+        onWebViewCreated: (WebViewController controller){
+          this.controller=controller; //위젯에 컨트롤러 저장
+        },
         initialUrl: 'https://blog.codefactory.ai',
         javascriptMode: JavascriptMode.unrestricted,
       ),
