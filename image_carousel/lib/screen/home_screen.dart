@@ -9,7 +9,13 @@ class HomeScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Text('Home Screen'),
+      body: PageView(//페이지 뷰 추가
+        children: [1,2,3,4,5]// 샘플리스트 생성
+            .map(//위젯으로 매핑
+            (number)=> Image.asset('asset/img/image_$number.jpeg',
+            fit: BoxFit.cover,),
+        ).toList(),
+      ),
     );
     throw UnimplementedError();
   }
