@@ -10,8 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e90f73f7-ece0-4011-a4c8-65f614212056" name="Changes" comment="update README.md">
-      <change beforePath="$PROJECT_DIR$/.idea/flutter_study_0729.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flutter_study_0729.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/basic/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +158,7 @@
       <workItem from="1722313020811" duration="1219000" />
       <workItem from="1722474432923" duration="50000" />
       <workItem from="1722478828152" duration="93000" />
+      <workItem from="1722820817595" duration="122000" />
     </task>
     <task id="LOCAL-00001" summary="0730-&gt; 네임드 생성자">
       <option name="closed" value="true" />
