@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:random_dice/screen/home_screen.dart';
+import 'package:random_dice/screen/settings_screen.dart';
 
 class RootScreen extends StatefulWidget{
   const RootScreen ({Key? key}):super(key: key);
@@ -16,6 +17,7 @@ class RootScreen extends StatefulWidget{
 class _RootScreenState extends State<RootScreen> with
 TickerProviderStateMixin{ //TickerProviderStateMixin 사용하기
   TabController? controller; //사용할  TabController 선언
+  double threshold=2.7;
 
   @override
   void initState(){
@@ -57,17 +59,17 @@ TickerProviderStateMixin{ //TickerProviderStateMixin 사용하기
     return [
      //홈스크린 불러와서 입력
       HomeScreen(number:6),
-      Container( // 설정 스크린 탭
-        child: Center(
-          child: Text(
-            'Tab 2',
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ),
+      SettingsScreen(
+          threshold: threshold,
+          onTresholdChange: onTresholdChange
       ),
     ];
+  }
+
+  void onTresholdChange(double val){
+    setState(() {
+      threshold=val;
+    });
   }
 
   BottomNavigationBar renderBottomNavigation(){
