@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:random_dice/screen/home_screen.dart';
 
 class RootScreen extends StatefulWidget{
   const RootScreen ({Key? key}):super(key: key);
@@ -54,16 +55,8 @@ TickerProviderStateMixin{ //TickerProviderStateMixin 사용하기
 
   List<Widget> renderChildren(){
     return [
-      Container( //홈 탭
-        child: Center(
-          child: Text(
-            'Tab 1',
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+     //홈스크린 불러와서 입력
+      HomeScreen(number:6),
       Container( // 설정 스크린 탭
         child: Center(
           child: Text(
