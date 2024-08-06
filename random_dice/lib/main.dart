@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:random_dice/screen/home_screen.dart';
 
 void main() {
-  runApp();
+  runApp(MaterialApp(
+    home: HomeScreen(),
+  ));
 }
