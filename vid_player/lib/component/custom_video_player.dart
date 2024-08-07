@@ -27,8 +27,11 @@ class CustomVideoPlayer extends StatefulWidget{
 }
 
 class _CustomVideoPlayer extends State<CustomVideoPlayer>{
+
   //동영상을 조작할 컨트롤러
   VideoPlayerController? videoPlayerController;
+  //동영상 조작하는 아이콘을 보일지 여부
+  bool showControls=false;
 
   @override
   void didUpdateWidget(covariant CustomVideoPlayer oldWidget){
@@ -73,12 +76,83 @@ class _CustomVideoPlayer extends State<CustomVideoPlayer>{
   @override
   Widget build(BuildContext context) {
 
+
     if(videoPlayerController==null){
       return Center(
         child: CircularProgressIndicator(),
       );
     }
-    return AspectRatio(//동영상 비율에 따른 화면 렌더링
+    return GestureDetector(
+      onTap: (){
+        setState(() {
+          showControls=!showControls;
+        });
+      },
+      child:
+      AspectRatio(//동영상 비율에 따른 화면 렌더링
+        aspectRatio: videoPlayerController!.value.aspectRatio,
+        child: Stack(
+          children: [
+            VideoPlayer(
+              videoPlayerController!,
+            ),
+            if(showControls)
+              Container(
+                color: Colors.black.withOpacity(0.5),
+              ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: Slider(
+                onChanged: (double val){
+                  videoPlayerController!.seekTo(
+                    Duration(seconds:val.toInt()),
+                  );
+                },
+                value: videoPlayerController!.value.position.inSeconds.toDouble(),
+                min: 0,
+                max: videoPlayerController!.value.duration.inSeconds.toDouble(),
+              ),
+            ),
+            if(showControls)
+              Align(
+                alignment: Alignment.topRight,
+                child: CustomIconButton(
+                  onPressed: widget.onNewVideoPressed,
+                  iconData: Icons.photo_camera_back_rounded,
+                ),
+              ),
+            if(showControls)
+              Align(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CustomIconButton(
+                        onPressed: onReversedPressed,
+                        iconData: Icons.rotate_left
+                    ),
+                    CustomIconButton(
+                      onPressed: onPlayPressed,
+                      iconData: videoPlayerController!.value.isPlaying?
+                      Icons.pause: Icons.play_arrow,
+                    ),
+                    CustomIconButton(
+                      onPressed:onForwardPressed,
+                      iconData: Icons.rotate_right,
+                    ),
+
+
+                  ],
+                ),
+              ),
+          ],
+        ),
+      ) ,
+    );
+
+      AspectRatio(//동영상 비율에 따른 화면 렌더링
       aspectRatio: videoPlayerController!.value.aspectRatio,
       child: Stack(
         children: [
