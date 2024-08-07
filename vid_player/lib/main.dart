@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vid_player/screen/home_screen.dart';
 
 void main() {
-  // runApp();
-  Duration duration=Duration(seconds: 192);
-  print(duration);//기간을 출력
+  runApp(
+    MaterialApp(
+      home: HomeScreen(),
+    )
+  );
 }
