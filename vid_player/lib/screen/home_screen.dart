@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:image_picker/image_picker.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget renderEmpty() {
     return Container(
       width: MediaQuery.of(context).size.width,
+      decoration: getBoxDecoration(), // 함수로 부터 값 가져오기
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -37,6 +39,21 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  BoxDecoration getBoxDecoration(){
+    return BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Color(0xFF2A3A7C),
+          Color(0xFF000118),
+
+        ]
+      )
+    );
+  }
+
 
   Widget renderVideo() {
     return Container();
