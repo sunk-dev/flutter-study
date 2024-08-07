@@ -40,6 +40,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  void onNewVideoPressed() async{
+    final video = await ImagePicker().pickVideo(
+        source: ImageSource.gallery,
+    );
+    if(video!=null){
+      setState(() {
+        this.video=video;
+      });
+    }
+  }
+
   BoxDecoration getBoxDecoration(){
     return BoxDecoration(
       gradient: LinearGradient(
@@ -61,15 +72,21 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _Logo extends StatelessWidget {
+  final GestureTapCallback onTap;
   const _Logo({
+    required this.onTap,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'asset/img/logo.png',
+    return GestureDetector(
+      onTap: onTap,
+      child:  Image.asset(
+        'asset/img/logo.png',
+      ),
     );
+
     // TODO: implement build
     throw UnimplementedError();
   }
