@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:image_picker/image_picker.dart';
 
+//위젯 파일 임포트
+import 'package:vid_player/component/custom_video_player.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -30,7 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _Logo(),
+          _Logo(
+            onTap: onNewVideoPressed,
+          ),
           SizedBox(
             height: 30.0,
           ),
@@ -67,7 +72,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
   Widget renderVideo() {
-    return Container();
+    return Center(
+      child: CustomVideoPlayer(
+        video: video!,
+      ),
+    );
   }
 }
 
