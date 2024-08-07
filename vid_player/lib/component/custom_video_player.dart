@@ -54,8 +54,27 @@ class _CustomVideoPlayer extends State<CustomVideoPlayer>{
     }
     return AspectRatio(//동영상 비율에 따른 화면 렌더링
       aspectRatio: videoPlayerController!.value.aspectRatio,
-      child: VideoPlayer(
-        videoPlayerController!,
+      child: Stack(
+        children: [
+          VideoPlayer(
+            videoPlayerController!,
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            left: 0,
+            child: Slider(
+              onChanged: (double val){
+                videoPlayerController!.seekTo(
+                  Duration(seconds:val.toInt()),
+                );
+              },
+              value: videoPlayerController!.value.position.inSeconds.toDouble(),
+              min: 0,
+              max: videoPlayerController!.value.duration.inSeconds.toDouble(),
+            ),
+          )
+        ],
       ),
     );
     // TODO: implement build
