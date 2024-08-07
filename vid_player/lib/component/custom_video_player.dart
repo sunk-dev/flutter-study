@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -7,48 +6,46 @@ import 'package:vid_player/component/custom_icon_button.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:io';
 
-class CustomVideoPlayer extends StatefulWidget{
-
+class CustomVideoPlayer extends StatefulWidget {
   //선택한 동영상을 저장할 변수
   //Xfile은 ImagePicker로 영상 또는 이미지를 선택했을때 반환하는 타입
 
   final XFile video;
   final GestureTapCallback onNewVideoPressed;
 
-
   const CustomVideoPlayer({
     required this.video,
     required this.onNewVideoPressed,
     Key? key,
-
-}):super(key: key);
-
-  State<CustomVideoPlayer> createState()=>_CustomVideoPlayer();
-}
-
-class _CustomVideoPlayer extends State<CustomVideoPlayer>{
-
-  //동영상을 조작할 컨트롤러
-  VideoPlayerController? videoPlayerController;
-  //동영상 조작하는 아이콘을 보일지 여부
-  bool showControls=false;
+  }) : super(key: key);
 
   @override
-  void didUpdateWidget(covariant CustomVideoPlayer oldWidget){
+  State<CustomVideoPlayer> createState() => _CustomVideoPlayer();
+}
+
+class _CustomVideoPlayer extends State<CustomVideoPlayer> {
+  //동영상을 조작할 컨트롤러
+  VideoPlayerController? videoController;
+
+  //동영상 조작하는 아이콘을 보일지 여부
+  bool showControls = false;
+
+  @override
+  void didUpdateWidget(covariant CustomVideoPlayer oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if(oldWidget.video.path!=widget.video.path){
+    if (oldWidget.video.path != widget.video.path) {
       initalizeController();
     }
   }
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    initalizeController();//컨틀ㄹ러 초기화
-
+    initalizeController(); //컨틀ㄹ러 초기화
   }
-  initalizeController() async{
-    final videoController=VideoPlayerController.file(
+
+  initalizeController() async {
+    final videoController = VideoPlayerController.file(
       File(widget.video.path),
     );
 
@@ -58,188 +55,154 @@ class _CustomVideoPlayer extends State<CustomVideoPlayer>{
     videoController!.addListener(videoControllerListenr);
 
     setState(() {
-      this.videoPlayerController=videoController;
+      this.videoController = videoController;
     });
   }
-  void videoControllerListenr(){
-    setState(() {
 
-    });
+  void videoControllerListenr() {
+    setState(() {});
   }
+
   @override
-  void dispose(){
-    videoPlayerController?.removeListener(videoControllerListenr);
+  void dispose() {
+    videoController?.removeListener(videoControllerListenr);
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
-
-
-    if(videoPlayerController==null){
+    if (videoController == null) {
       return Center(
         child: CircularProgressIndicator(),
       );
     }
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         setState(() {
-          showControls=!showControls;
+          showControls = !showControls;
         });
       },
-      child:
-      AspectRatio(//동영상 비율에 따른 화면 렌더링
-        aspectRatio: videoPlayerController!.value.aspectRatio,
+      child: AspectRatio(
+        //동영상 비율에 따른 화면 렌더링
+        aspectRatio: videoController!.value.aspectRatio,
         child: Stack(
           children: [
             VideoPlayer(
-              videoPlayerController!,
+              videoController!,
             ),
-            if(showControls)
+            if (showControls)
               Container(
                 color: Colors.black.withOpacity(0.5),
               ),
             Positioned(
               bottom: 0,
-              right: 0,
               left: 0,
-              child: Slider(
-                onChanged: (double val){
-                  videoPlayerController!.seekTo(
-                    Duration(seconds:val.toInt()),
-                  );
-                },
-                value: videoPlayerController!.value.position.inSeconds.toDouble(),
-                min: 0,
-                max: videoPlayerController!.value.duration.inSeconds.toDouble(),
-              ),
-            ),
-            if(showControls)
-              Align(
-                alignment: Alignment.topRight,
-                child: CustomIconButton(
-                  onPressed: widget.onNewVideoPressed,
-                  iconData: Icons.photo_camera_back_rounded,
-                ),
-              ),
-            if(showControls)
-              Align(
-                alignment: Alignment.center,
+              right: 0,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    CustomIconButton(
-                        onPressed: onReversedPressed,
-                        iconData: Icons.rotate_left
+                    renderTimeTextFromDuration(
+                      videoController!.value.position,
                     ),
-                    CustomIconButton(
-                      onPressed: onPlayPressed,
-                      iconData: videoPlayerController!.value.isPlaying?
-                      Icons.pause: Icons.play_arrow,
+                    Expanded(
+                      child: Slider(
+                        onChanged: (double val) {
+                          videoController!.seekTo(
+                            Duration(seconds: val.toInt()),
+                          );
+                        },
+                        value: videoController!.value.position.inSeconds
+                            .toDouble(),
+                        min: 0,
+                        max: videoController!.value.duration.inSeconds
+                            .toDouble(),
+                      ),
                     ),
-                    CustomIconButton(
-                      onPressed:onForwardPressed,
-                      iconData: Icons.rotate_right,
+                    renderTimeTextFromDuration(
+                      videoController!.value.duration,
                     ),
-
-
                   ],
                 ),
               ),
+            ),
+            if (showControls)
+            Align(
+              alignment: Alignment.topRight,
+              child: CustomIconButton(
+                onPressed: widget.onNewVideoPressed,
+                iconData: Icons.photo_camera_back,
+              ),
+            ),
+            if (showControls)
+            Align(
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CustomIconButton(
+                      onPressed: onReversedPressed,
+                      iconData: Icons.rotate_left),
+                  CustomIconButton(
+                    onPressed: onPlayPressed,
+                    iconData: videoController!.value.isPlaying
+                        ? Icons.pause
+                        : Icons.play_arrow,
+                  ),
+                  CustomIconButton(
+                    onPressed: onForwardPressed,
+                    iconData: Icons.rotate_right,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
-      ) ,
-    );
-
-      AspectRatio(//동영상 비율에 따른 화면 렌더링
-      aspectRatio: videoPlayerController!.value.aspectRatio,
-      child: Stack(
-        children: [
-          VideoPlayer(
-            videoPlayerController!,
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            left: 0,
-            child: Slider(
-              onChanged: (double val){
-                videoPlayerController!.seekTo(
-                  Duration(seconds:val.toInt()),
-                );
-              },
-              value: videoPlayerController!.value.position.inSeconds.toDouble(),
-              min: 0,
-              max: videoPlayerController!.value.duration.inSeconds.toDouble(),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topRight,
-            child: CustomIconButton(
-              onPressed: widget.onNewVideoPressed,
-              iconData: Icons.photo_camera_back_rounded,
-            ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CustomIconButton(
-                    onPressed: onReversedPressed,
-                    iconData: Icons.rotate_left
-                ),
-                CustomIconButton(
-                    onPressed: onPlayPressed,
-                    iconData: videoPlayerController!.value.isPlaying?
-                        Icons.pause: Icons.play_arrow,
-                ),
-                CustomIconButton(
-                    onPressed:onForwardPressed,
-                    iconData: Icons.rotate_right,
-                ),
-
-
-              ],
-            ),
-          ),
-        ],
       ),
     );
-    // TODO: implement build
+
     throw UnimplementedError();
   }
+  Widget renderTimeTextFromDuration(Duration duration){
+    return Text(
+      '${duration.inMinutes.toString().padLeft(2,'0')}:${(duration.inSeconds%60).toString().padLeft(2,'0')}',
+      style: TextStyle(
+        color: Colors.white,
+      ),
 
-  void onReversedPressed(){
-    final currentPosition= videoPlayerController!.value.position;//현재 실행중인 위치
-    Duration position=Duration();
-    if(currentPosition.inSeconds>3){ //현재위치가 3초보다 길때만 3초 빼기
-      position=currentPosition-Duration(seconds: 3);
-    }
-    videoPlayerController!.seekTo(position);
-  }
-
-  void onForwardPressed(){
-    final maxPosition =videoPlayerController!.value.duration;
-    final currentPosition=videoPlayerController!.value.position;
-
-    Duration position=maxPosition;
-
-    if((maxPosition-Duration(seconds: 3)).inSeconds>currentPosition.inSeconds){
-      position=currentPosition+Duration(seconds: 3);
-      videoPlayerController!.seekTo(position);
-    }
+    );
 
   }
-  void onPlayPressed(){
-    if(videoPlayerController!.value.isPlaying){
-      videoPlayerController!.pause();
 
-    }else{
-      videoPlayerController!.play();
+  void onReversedPressed() {
+    final currentPosition = videoController!.value.position; //현재 실행중인 위치
+    Duration position = Duration();
+    if (currentPosition.inSeconds > 3) {
+      //현재위치가 3초보다 길때만 3초 빼기
+      position = currentPosition - Duration(seconds: 3);
     }
+    videoController!.seekTo(position);
   }
 
+  void onForwardPressed() {
+    final maxPosition = videoController!.value.duration;
+    final currentPosition = videoController!.value.position;
 
+    Duration position = maxPosition;
+
+    if ((maxPosition - Duration(seconds: 3)).inSeconds >
+        currentPosition.inSeconds) {
+      position = currentPosition + Duration(seconds: 3);
+
+    }
+    videoController!.seekTo(position);
+  }
+
+  void onPlayPressed() {
+    if (videoController!.value.isPlaying) {
+      videoController!.pause();
+    } else {
+      videoController!.play();
+    }
+  }
 }
