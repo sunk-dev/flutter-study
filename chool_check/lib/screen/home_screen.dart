@@ -8,6 +8,12 @@ class HomeScreen extends StatelessWidget {
     37.5233273,
     126.921252,
   );
+  
+  //회사위치 마커선언
+  static final Marker marker=Marker(
+      markerId: MarkerId('company'),
+    position: companyLatLng,
+  );
 
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -34,6 +40,7 @@ class HomeScreen extends StatelessWidget {
                         target: companyLatLng,
                         zoom: 16,
                       ),
+                      markers: Set.from([marker]),
                     ),
                   ),
                   Expanded(
@@ -105,7 +112,7 @@ class HomeScreen extends StatelessWidget {
       return '앱의 위치권한을 설정에서 허가해 주세요';
     }
     //위 모든 조건이 통과 되면 위치 권한 허가 완료
-    return '위치 권한이 허가 되었습니다';
+    return '위치 권한이 허가 되었습니다.';//이런건 나중에 틀리면 찾기 힘드니까 상수로 바꾸는게 좋을듯!
   }
 
 }
