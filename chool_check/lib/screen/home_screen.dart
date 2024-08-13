@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,39 +15,58 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: renderAppBar(),
-        body: Column(
-          children: [
-            Expanded(
-              flex: 2,
-              child: GoogleMap(
-                initialCameraPosition: CameraPosition(
-                  target: companyLatLng,
-                  zoom: 16,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+        body:FutureBuilder<String>(
+          future: checkPermission(),
+          builder: (context,snapshot){
+            if(!snapshot.hasData&&
+            snapshot.connectionState==ConnectionState.waiting){
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if(snapshot.data=='위치 권한이 허가 되었습니다.'){
+              return Column(
                 children: [
-                  Icon(
-                    Icons.timelapse_outlined,
-                    color: Colors.blue,
-                    size: 50.0,
+                  Expanded(
+                    flex: 2,
+                    child: GoogleMap(
+                      initialCameraPosition: CameraPosition(
+                        target: companyLatLng,
+                        zoom: 16,
+                      ),
+                    ),
                   ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text('출근하기!'),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.timelapse_outlined,
+                          color: Colors.blue,
+                          size: 50.0,
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('출근하기!'),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
+              );
+            }
+            return Center(
+              child: Text(
+                snapshot.data.toString(),
               ),
-            ),
-          ],
-        ));
+            );
+          },
+        )
+    );
     // TODO: implement build
     throw UnimplementedError();
   }
@@ -65,4 +85,27 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
     );
   }
+  Future<String> checkPermission()async{
+    final isLocationEnabled=await Geolocator.isLocationServiceEnabled();
+    //위치 서비스 활성화 여부확인
+    if(!isLocationEnabled){//위치서비스 활성화 안됨
+      return '위치서비스를 활성화 해주세요!';
+    }
+    LocationPermission checkedPermission=await Geolocator.checkPermission();
+    //위치 권한 확인
+    if(checkedPermission==LocationPermission.denied){
+      //위치 권한이 거절된 상태이면
+      //위치권한 요청하기
+      checkedPermission=await Geolocator.requestPermission();
+      if(checkedPermission==LocationPermission.denied){
+        return '위치 권한을 허가해주세요';
+      }
+    }
+    if(checkedPermission==LocationPermission.deniedForever){
+      return '앱의 위치권한을 설정에서 허가해 주세요';
+    }
+    //위 모든 조건이 통과 되면 위치 권한 허가 완료
+    return '위치 권한이 허가 되었습니다';
+  }
+
 }
