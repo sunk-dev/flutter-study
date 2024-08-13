@@ -49,6 +49,7 @@ class HomeScreen extends StatelessWidget {
                         target: companyLatLng,
                         zoom: 16,
                       ),
+                      myLocationEnabled: true,
                       markers: Set.from([marker]),
                       circles: Set.from([circle]),
                     ),
