@@ -68,7 +68,44 @@ class HomeScreen extends StatelessWidget {
                           height: 20.0,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            final curPosition=await Geolocator.getCurrentPosition();//현재위치
+                            final distance=Geolocator.distanceBetween(
+                                curPosition.latitude,
+                                curPosition.longitude,
+                                companyLatLng.latitude,
+                                companyLatLng.longitude
+                            );
+
+                            bool canCheck=
+                                distance<100;
+                            showDialog(
+                                context: context,
+                                builder:(_){
+                                  return AlertDialog(
+                                    title: Text('출근하기'),
+                                    content: Text(
+                                      canCheck? '출근을 하시겠습니까?':'출근할 수 없는 위치입니다.',
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                          onPressed:(){
+                                            Navigator.of(context).pop(false);
+                                          },
+                                          child: Text('취소')
+                                      ),
+                                      if(canCheck)
+                                        TextButton(
+                                            onPressed: (){
+                                              Navigator.of(context).pop(true);
+                                            },
+                                            child:Text('출근하기'),
+                                        ),
+                                    ],
+                                  );
+                                },
+                            );
+                          },
                           child: Text('출근하기!'),
                         ),
                       ],
