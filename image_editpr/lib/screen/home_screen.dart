@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_editpr/component/main_app_bar.dart';
+import 'package:image_editpr/component/footer.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -34,6 +35,15 @@ class _HomeState extends State<HomeScreen>{
               onDeleteItem: onDeleteImage,
             ) ,
           ),
+          if(image!=null)
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Footer(
+                onEmoticonTap: onEmoticonTap,
+              ),
+            ),
           //MainAppBar 좌우 위끝에 정렬
         ],
 
@@ -66,6 +76,8 @@ class _HomeState extends State<HomeScreen>{
         );
     }
   }
+
+  void onEmoticonTap(int index){}
 
   void onPickImage()async{
     final image=await ImagePicker().
