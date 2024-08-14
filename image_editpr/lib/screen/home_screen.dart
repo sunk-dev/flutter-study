@@ -1,12 +1,15 @@
 
-import 'dart:ui';
-
+import 'dart:ui' as ui;
+import 'package:flutter/services.dart';
+import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:image_editpr/component/emoticon_sticker.dart';
 import 'package:image_editpr/component/main_app_bar.dart';
 import 'package:image_editpr/component/footer.dart';
 import 'package:image_editpr/model/sticker_model.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -24,6 +27,8 @@ class _HomeState extends State<HomeScreen>{
   XFile? image;
   Set<StickerModel> stickers={};
   String? selectedId;
+  GlobalKey imgKey=GlobalKey();//이미지로 전환할 위젯에 입력해중 키값
+
 
 
   @override
@@ -62,7 +67,9 @@ class _HomeState extends State<HomeScreen>{
   }
   Widget renderBody(){
     if(image!=null){
-      return Positioned.fill(
+      return RepaintBoundary(
+        key: imgKey,
+        child: Positioned.fill(
           child: InteractiveViewer(
             child: Stack(
               fit: StackFit.expand,
@@ -72,20 +79,21 @@ class _HomeState extends State<HomeScreen>{
                   fit: BoxFit.cover,
                 ),
                 ...stickers.map(
-                    (sticker)=>Center( //최초스티커 선택시 중앙에 배치
-                      child: EmoticonSticker(
-                        key: ObjectKey(sticker.id),
-                        onTransForm: (){
-                          onTransForm(sticker.id);
-                        },
-                        imgPath: sticker.imgPath,
-                        isSelected: selectedId==sticker.id,
-                      ),
+                      (sticker)=>Center( //최초스티커 선택시 중앙에 배치
+                    child: EmoticonSticker(
+                      key: ObjectKey(sticker.id),
+                      onTransForm: (){
+                        onTransForm(sticker.id);
+                      },
+                      imgPath: sticker.imgPath,
+                      isSelected: selectedId==sticker.id,
                     ),
+                  ),
                 ),
               ],
             ),
           ),
+        ),
       );
     }else{
       return Center(
@@ -129,7 +137,21 @@ class _HomeState extends State<HomeScreen>{
       this.image=image;
     });
   }
-  void onSaveImage(){}
+  void onSaveImage()async{
+    //이미지 저장기능을 구현할 함수
+    RenderRepaintBoundary boundary=imgKey.currentContext!
+        .findRenderObject() as RenderRepaintBoundary;
+    ui.Image img = await boundary.toImage();
+    ByteData? byteData=await img.toByteData(format: ui.ImageByteFormat.png);
+    Uint8List pngBytes=byteData!.buffer.asUint8List();
+
+    await ImageGallerySaver.saveImage(pngBytes,quality: 100);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('저장되었습니다.')
+      ),
+    );
+
+  }
   void onDeleteImage()async{
     setState(() {
       stickers=stickers.where((sticker)=>sticker.id!=selectedId).toSet();
