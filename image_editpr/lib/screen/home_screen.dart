@@ -130,7 +130,12 @@ class _HomeState extends State<HomeScreen>{
     });
   }
   void onSaveImage(){}
-  void onDeleteImage(){}
+  void onDeleteImage()async{
+    setState(() {
+      stickers=stickers.where((sticker)=>sticker.id!=selectedId).toSet();
+      //현재 선택되어 있는 스티커삭제후 Set으로 변환
+    });
+  }
 
 
 
