@@ -1,10 +1,16 @@
 
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_editpr/component/emoticon_sticker.dart';
 import 'package:image_editpr/component/main_app_bar.dart';
 import 'package:image_editpr/component/footer.dart';
+import 'package:image_editpr/model/sticker_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+
+import 'package:uuid/uuid.dart';
 
 class HomeScreen extends StatefulWidget{
   const HomeScreen ({Key? key}):super(key: key);
@@ -16,6 +22,8 @@ class HomeScreen extends StatefulWidget{
 
 class _HomeState extends State<HomeScreen>{
   XFile? image;
+  Set<StickerModel> stickers={};
+  String? selectedId;
 
 
   @override
@@ -56,9 +64,26 @@ class _HomeState extends State<HomeScreen>{
     if(image!=null){
       return Positioned.fill(
           child: InteractiveViewer(
-            child: Image.file(
-              File(image!.path),
-              fit: BoxFit.cover,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.file(
+                  File(image!.path),
+                  fit: BoxFit.cover,
+                ),
+                ...stickers.map(
+                    (sticker)=>Center( //최초스티커 선택시 중앙에 배치
+                      child: EmoticonSticker(
+                        key: ObjectKey(sticker.id),
+                        onTransForm: (){
+                          onTransForm(sticker.id);
+                        },
+                        imgPath: sticker.imgPath,
+                        isSelected: selectedId==sticker.id,
+                      ),
+                    ),
+                ),
+              ],
             ),
           ),
       );
@@ -77,7 +102,25 @@ class _HomeState extends State<HomeScreen>{
     }
   }
 
-  void onEmoticonTap(int index){}
+  void onTransForm(String id){
+    //스티커가 변형 될따마다 변형중인
+    //스티커를 현재 선택한 스티커로 지정
+    setState(() {
+      selectedId=id;
+    });
+  }
+
+  void onEmoticonTap(int index)async{
+    setState(() {
+      stickers={
+        ...stickers,
+        StickerModel(
+          id:Uuid().v4(),//스티커의 고유 ID
+          imgPath: 'asset/img/emoticon_$index.png',
+        ),
+      };
+    });
+  }
 
   void onPickImage()async{
     final image=await ImagePicker().
