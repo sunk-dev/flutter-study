@@ -4,9 +4,16 @@ import 'package:cf_tube/repository/youtube_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget{
+class HomeScreen extends StatefulWidget{
   const HomeScreen({Key? key}):super(key: key);
+  @override
+  State<HomeScreen> createState()=> _HomeScreenState();
 
+
+
+}
+
+class _HomeScreenState extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +40,15 @@ class HomeScreen extends StatelessWidget{
               child: CircularProgressIndicator(),
             );
           }
-          return ListView(
-            physics: BouncingScrollPhysics(),
-            children: snapshot.data!
-            .map((e)=>CustomYoutubePlayer(videoModel: e)).toList(),
+          return RefreshIndicator(
+            onRefresh: () async{
+              setState(() {});
+          },
+            child: ListView(
+              physics: BouncingScrollPhysics(),
+              children: snapshot.data!
+                  .map((e)=>CustomYoutubePlayer(videoModel: e)).toList(),
+            ),
           );
         },
       ),
@@ -44,5 +56,4 @@ class HomeScreen extends StatelessWidget{
     // TODO: implement build
     throw UnimplementedError();
   }
-
 }
