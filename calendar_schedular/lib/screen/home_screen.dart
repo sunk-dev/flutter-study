@@ -52,7 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 8.0,
             ),
-            TodayBanner(selectedDate: selectedDate, count: 0),
+            StreamBuilder<List<Schedule>>(
+              stream: GetIt.I<LocalDataBase>().wathSchedules(selectedDate),
+              builder: (context,snapshot){
+                return TodayBanner(selectedDate: selectedDate, count: snapshot.data?.length??0);
+
+              },
+            ),
+
             SizedBox(
               height: 8.0,
             ),
