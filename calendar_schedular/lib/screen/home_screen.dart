@@ -3,8 +3,11 @@ import 'package:calendar_schedular/component/schedule_card.dart';
 import 'package:calendar_schedular/component/today_banner.dart';
 import 'package:calendar_schedular/component/schdule_bottom_sheet.dart';
 import 'package:calendar_schedular/const/colors.dart';
+import 'package:calendar_schedular/database/drift_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:calendar_schedular/database/drift_database.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -53,7 +56,30 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 8.0,
             ),
-            ScheduleCard(startTime: 12, endTime: 14, content: '프로그래밍 공부'),
+            Expanded(
+              child: StreamBuilder<List<Schedule>>(
+                stream: GetIt.I<LocalDataBase>().wathSchedules(selectedDate),
+                builder: (context,snapshot){
+                  if(!snapshot.hasData){
+                    return Container();
+                  }
+                  return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context,index){
+                      final schedule=snapshot.data![index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0,left: 8.0,right: 8.0),
+                        child: ScheduleCard(
+                          startTime: schedule.startTime,
+                          endTime: schedule.endTime,
+                          content: schedule.content,
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
