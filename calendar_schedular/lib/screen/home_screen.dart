@@ -25,13 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: PRIMARY_COLOR,
-        onPressed: (){
+        onPressed: () {
           showModalBottomSheet(
-              context: context,
-              isDismissible: true,
-              builder:(_)=>SchduleBottomSheet(),
-
-              );
+            context: context,
+            isDismissible: true,
+            builder: (_) => SchduleBottomSheet(),
+            isScrollControlled: true,
+          );
         },
         child: Icon(
           Icons.add,
