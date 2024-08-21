@@ -1,4 +1,5 @@
 import 'package:calendar_schedular/component/main_calendar.dart';
+import 'package:calendar_schedular/component/schedule_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen>{
               selectedDate: selectedDate,
               onDaySelected: onDayselected,
             ),
+            ScheduleCard(startTime: 12, endTime: 14, content: '프로그래밍 공부'),
           ],
         ),
       ),
