@@ -10,11 +10,11 @@ class CustomTextField extends StatelessWidget {
   final FormFieldValidator<String> validator;
 
   const CustomTextField({
-    Key? key,
     required this.label,
     required this.isTime,
     required this.onSaved,
     required this.validator,
+    Key? key,
   }) : super(key: key);
 
   @override

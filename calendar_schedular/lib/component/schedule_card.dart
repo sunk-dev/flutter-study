@@ -7,10 +7,11 @@ class ScheduleCard extends StatelessWidget {
   final String content;
 
   const ScheduleCard({
-    Key? key,
+
     required this.startTime,
     required this.endTime,
     required this.content,
+    Key? key,
   }) : super(key: key);
 
   @override

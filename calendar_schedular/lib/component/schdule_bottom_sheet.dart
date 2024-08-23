@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:calendar_schedular/component/custom_text_field.dart';
 import 'package:calendar_schedular/const/colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,16 +9,20 @@ import 'package:drift/drift.dart' hide Column;
 import 'package:get_it/get_it.dart';
 import 'package:calendar_schedular/database/drift_database.dart';
 
-class SchduleBottomSheet extends StatefulWidget {
+import 'package:calendar_schedular/model/schedule_model.dart';
+import 'package:provider/provider.dart';
+import 'package:calendar_schedular/provider/schedule_provider.dart';
+
+class ScheduleBottomSheet extends StatefulWidget {
   final DateTime selectedDate; //선택된 날짜 상위 위젯에서 입력받기
-  const SchduleBottomSheet({required this.selectedDate, Key? key})
+  const ScheduleBottomSheet({required this.selectedDate, Key? key})
       : super(key: key);
 
   @override
-  State<SchduleBottomSheet> createState() => _ScheduleBottomSheetState();
+  State<ScheduleBottomSheet> createState() => _ScheduleBottomSheetState();
 }
 
-class _ScheduleBottomSheetState extends State<SchduleBottomSheet> {
+class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
   final GlobalKey<FormState> formKey = GlobalKey();
   int? startTime; //시작시간 저장변수
   int? endTime; //끝 시간 저장 변수
@@ -78,7 +84,7 @@ class _ScheduleBottomSheetState extends State<SchduleBottomSheet> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: onSavePressed,
+                    onPressed: () => onSavePressed(context),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: PRIMARY_COLOR,
                     ),
@@ -95,17 +101,18 @@ class _ScheduleBottomSheetState extends State<SchduleBottomSheet> {
     throw UnimplementedError();
   }
 
-  void onSavePressed() async {
+  void onSavePressed(BuildContext context) async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
 
-      await GetIt.I<LocalDataBase>().createSchedule(
-        SchedulesCompanion(
-          startTime: Value(startTime!),
-          endTime: Value(endTime!),
-          content: Value(content!),
-          date: Value(widget.selectedDate),
-        ),
+      context.read<ScheduleProvider>().createSchedule(
+          schedule: ScheduleModel(
+              id: 'new_model',
+              content: content!,
+              date: widget.selectedDate,
+              startTime: startTime!,
+              endTime: endTime!
+          )
       );
       Navigator.of(context).pop();
     }

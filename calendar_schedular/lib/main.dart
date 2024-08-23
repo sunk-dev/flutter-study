@@ -14,9 +14,9 @@ void main() async{
 
   await initializeDateFormatting(); //init 패키지 초기화
   final database=LocalDataBase();
-  GetIt.I.registerSingleton<LocalDataBase>(database);
   final repository=ScheduleRepository();
   final schdeuleProvider=ScheduleProvider(repository: repository);
+  GetIt.I.registerSingleton<LocalDataBase>(database);
   runApp(
     ChangeNotifierProvider(
         create: (_)=>schdeuleProvider,
