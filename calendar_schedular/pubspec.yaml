@@ -45,6 +45,8 @@ dependencies:
   dio: 4.0.6 # 네트워크 요청 관리
   provider: 6.0.3 # 상태관리를 가능하게함
   uuid: 3.0.6 # UUID
+  firebase_core: 2.2.0
+  cloud_firestore: 4.0.5
 
 
 
