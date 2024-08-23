@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:calendar_schedular/component/custom_text_field.dart';
 import 'package:calendar_schedular/const/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +12,8 @@ import 'package:get_it/get_it.dart';
 import 'package:calendar_schedular/database/drift_database.dart';
 
 import 'package:calendar_schedular/model/schedule_model.dart';
-import 'package:provider/provider.dart';
-import 'package:calendar_schedular/provider/schedule_provider.dart';
+import 'package:uuid/uuid.dart';
+
 
 class ScheduleBottomSheet extends StatefulWidget {
   final DateTime selectedDate; //선택된 날짜 상위 위젯에서 입력받기
@@ -29,16 +31,22 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
   String? content; // 일정 내용 저장 변수
   @override
   Widget build(BuildContext context) {
-    final bottomInset = MediaQuery.of(context).viewInsets.bottom;
+    final bottomInset = MediaQuery
+        .of(context)
+        .viewInsets
+        .bottom;
     return Form(
       key: formKey,
       child: SafeArea(
         child: Container(
-          height: MediaQuery.of(context).size.height / 2 + bottomInset,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height / 2 + bottomInset,
           color: Colors.white,
           child: Padding(
             padding:
-                EdgeInsets.only(left: 8, right: 8, top: 8, bottom: bottomInset),
+            EdgeInsets.only(left: 8, right: 8, top: 8, bottom: bottomInset),
             child: Column(
               children: [
                 Row(
@@ -105,15 +113,17 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
 
-      context.read<ScheduleProvider>().createSchedule(
-          schedule: ScheduleModel(
-              id: 'new_model',
-              content: content!,
-              date: widget.selectedDate,
-              startTime: startTime!,
-              endTime: endTime!
-          )
-      );
+      final schedule = ScheduleModel(
+          id: Uuid().v4(),
+          content: content!,
+          date: widget.selectedDate,
+          startTime: startTime!,
+          endTime: endTime!);
+
+      await FirebaseFirestore.instance.collection(
+        'schedule',
+      ).doc(schedule.id)
+      .set(schedule.toJson());
       Navigator.of(context).pop();
     }
   }
