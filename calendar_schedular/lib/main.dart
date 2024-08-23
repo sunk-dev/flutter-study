@@ -1,13 +1,7 @@
-import 'package:calendar_schedular/database/drift_database.dart';
+
 import 'package:calendar_schedular/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:calendar_schedular/database/drift_database.dart';
-import 'package:get_it/get_it.dart';
-import 'package:calendar_schedular/provider/schedule_provider.dart';
-import 'package:calendar_schedular/repository/schedule_repository.dart';
-import 'package:provider/provider.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:calendar_schedular/firebase_options.dart';
 
@@ -21,17 +15,12 @@ void main() async{
   );
 
   await initializeDateFormatting(); //init 패키지 초기화
-  final database=LocalDataBase();
-  final repository=ScheduleRepository();
-  final schdeuleProvider=ScheduleProvider(repository: repository);
-  GetIt.I.registerSingleton<LocalDataBase>(database);
+
   runApp(
-    ChangeNotifierProvider(
-        create: (_)=>schdeuleProvider,
-      child: MaterialApp(
-        home: HomeScreen(),
-      ),
-    ),
+   MaterialApp(
+     debugShowCheckedModeBanner: false,
+     home: HomeScreen(),
+   )
   );
 }
 

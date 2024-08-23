@@ -112,6 +112,7 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
   void onSavePressed(BuildContext context) async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
+      print('넣어지는 숫자 ${widget.selectedDate}');
 
       final schedule = ScheduleModel(
           id: Uuid().v4(),
