@@ -67,10 +67,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   onDaySelected(selectedDate, focusedDate, context),
             ),
             SizedBox(height: 8.0),
-            TodayBanner(
-              // ➊ 배너 추가하기
-              selectedDate: selectedDate,
-              count: 0,
+            StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection(
+                  'schedule',
+                )
+                    .where('date',
+                isEqualTo: '${selectedDate.year}${selectedDate.month}${selectedDate.day}',).snapshots(),
+              builder: (context, snapshot){
+                  return TodayBanner(selectedDate: selectedDate, count: snapshot.data?.docs.length??0,);
+              },
             ),
             SizedBox(height: 8.0),
             Expanded(
