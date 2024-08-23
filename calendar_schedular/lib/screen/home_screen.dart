@@ -113,6 +113,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             key: ObjectKey(schedule.id),
                             direction: DismissDirection.startToEnd,
                             onDismissed: (DismissDirection direction){
+                              FirebaseFirestore.instance
+                                  .collection('schedule')
+                                  .doc(schedule.id)
+                                  .delete();
 
                             },
                             child: Padding(
