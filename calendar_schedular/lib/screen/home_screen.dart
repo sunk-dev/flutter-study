@@ -5,6 +5,7 @@ import 'package:calendar_schedular/component/today_banner.dart';
 import 'package:calendar_schedular/const/colors.dart';
 import 'package:calendar_schedular/model/schedule_model.dart';
 import 'package:calendar_schedular/model/schedule_model.dart';
+import 'package:calendar_schedular/screen/banner_ad_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_schedular/component/main_calendar.dart';
@@ -120,8 +121,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                       .toList();
 
-                  return ListView.builder(
+                  return ListView.separated(
                     itemCount: schedules.length,
+                    separatorBuilder: (context,index){
+                      return BannerAdWidget();
+                    },
                     itemBuilder: (context, index) {
                       final schedule = schedules[index];
 
