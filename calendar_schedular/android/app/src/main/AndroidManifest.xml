@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="ai.seon.calendarscheduler">
     <application
         android:label="calendar_schedular"
         android:name="${applicationName}"
